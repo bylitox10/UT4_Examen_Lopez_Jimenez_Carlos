@@ -6,7 +6,6 @@ class receta(ABC):
         self.nombre = nombre  # nombre
         self.ingredientes = ingredientes  # ingredientes
         self.pasos = pasos  # pasos
-
     @abstractmethod
     def mostrar(self):
         nombre_receta = int(input("Que receta quieres usar: 1-Vegetariana o 2-No vegetariana"))
@@ -24,12 +23,12 @@ class receta(ABC):
 
 
 # Clase para recetas vegetarianas
-class RecetaVegetariana(receta):
+class RecetaVegetariana(receta,ABC):
     @abstractmethod
     def mostrar(self):
         pass
 # Clase para recetas no vegetarianas
-class RecetaNoVegetariana(receta):
+class RecetaNoVegetariana(receta,ABC):
     @abstractmethod
     def mostrar(self):
         pass
@@ -67,23 +66,21 @@ def crear_receta():
     return nombre1, ingredientes1, pasos1
 
 # Función principal
-def principal():
-    receta_vegetariana = RecetaVegetariana("Ensalada César", ["lechuga", "queso", "pan tostado", "salsa"], ["Lavar", "Mezclar", "Servir"])
-    receta_no_vegetariana = RecetaNoVegetariana("Pollo al horno", ["pollo", "patatas", "ajo", "aceite"], ["Preparar", "Hornear", "Servir"])
-    
-    # Duplicación de código al imprimir
-    print("== Mostrar recetas ==")
-    utilidades.imprimir_receta(receta_vegetariana)
-    utilidades.imprimir_receta(receta_no_vegetariana)
 
-    # Código duplicado para mostrar ingredientes
-    print("Ingredientes de Ensalada César:")
-    for ing in receta_vegetariana.ingredientes:
-        print(f"* {ing}")
-    
-    print("Ingredientes de Pollo al horno:")
-    for ing in receta_no_vegetariana.ingredientes:
-        print(f"* {ing}")
+def principal():
+    nombre1, ingredientes1, pasos1 = crear_receta()
+    tipo = int(input("receta que quieres crear: 1-vegetariana o 2-no vegetariana "))
+    if tipo == 1:
+        print("Crear receta vegetariana: ")
+        #apto_veganos = input("Dime si es para veganos: ")
+        receta1 = RecetaVegetariana(nombre1, ingredientes1, pasos1,) #apto_veganos)
+    elif tipo == 2:
+        print("Crear receta para no vegetarianos: ")
+        #no_apto_veganos = input("Dime el punto de la carne: ")
+        receta2 = RecetaNoVegetariana(nombre1, ingredientes1, pasos1,) #no_apto_veganos)
+    else:
+        print("No has indicado el tipo correcto")
+    return receta1, receta2
 
 
 # Ejecutar el programa
