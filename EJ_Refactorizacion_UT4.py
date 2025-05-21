@@ -9,31 +9,31 @@ class receta(ABC):
 
     @abstractmethod
     def mostrar(self):
-        pass
+        nombre_receta = int(input("Que receta quieres usar: 1-Vegetariana o 2-No vegetariana"))
+        if nombre_receta == 1:
+            print(f"Receta vegetariana: {self.nombre}")
+            print("Ingredientes:")
+        elif nombre_receta == 2:
+            print(f"Receta NO vegetariana: {self.nombre}")
+            print("Ingredientes:")   
+        for ingredientes in self.ingredientes:
+            print(f"- {ingredientes}")
+        print("Pasos:")
+        for paso in self.pasos:
+            print(f"{paso}")
 
 
 # Clase para recetas vegetarianas
 class RecetaVegetariana(receta):
+    @abstractmethod
     def mostrar(self):
-        print(f"Receta vegetariana: {self.nombre}")
-        print("Ingredientes:")
-        for ingredientes in self.ingredientes:
-            print(f"- {ingredientes}")
-        print("Pasos:")
-        for paso in self.pasos:
-            print(f"{paso}")
-
-
+        pass
+    
 # Clase para recetas no vegetarianas
 class RecetaNoVegetariana(receta):
+    @abstractmethod
     def mostrar(self):
-        print(f"Receta NO vegetariana: {self.nombre}")
-        print("Ingredientes:")
-        for ingredientes in self.ingredientes:
-            print(f"- {ingredientes}")
-        print("Pasos:")
-        for paso in self.pasos:
-            print(f"{paso}")
+        pass
 
 
 # Clase con utilidades del restaurante
