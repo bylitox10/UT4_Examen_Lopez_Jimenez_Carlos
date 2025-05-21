@@ -28,7 +28,6 @@ class RecetaVegetariana(receta):
     @abstractmethod
     def mostrar(self):
         pass
-    
 # Clase para recetas no vegetarianas
 class RecetaNoVegetariana(receta):
     @abstractmethod
@@ -48,6 +47,24 @@ class utilidades:
     def mostrar_lista_ingredientes(lista):
         for l in lista:
             print(f"* {l}")
+
+def crear_receta():
+    nombre1 = input("Nombre receta")
+    ingredientes1 = []
+    print("Dime ingredientes y pon fin para terminar.")
+    while True:
+        ing = input("- ")
+        if ing.lower() == "fin":
+            break
+        ingredientes1.append(ing)
+    pasos1 = []
+    print("Dime los pasos, escribe fin para terminar: ")
+    while True:
+        paso = input("- ")
+        if paso.lower() == "fin":
+            break
+        pasos1.append(paso)
+    return nombre1, ingredientes1, pasos1
 
 # Función principal
 def principal():
