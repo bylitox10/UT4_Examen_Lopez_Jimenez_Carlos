@@ -24,12 +24,12 @@ class receta(ABC):
 
 # Clase para recetas vegetarianas
 class RecetaVegetariana(receta,ABC):
-    @abstractmethod
+    
     def mostrar(self):
         pass
 # Clase para recetas no vegetarianas
 class RecetaNoVegetariana(receta,ABC):
-    @abstractmethod
+    
     def mostrar(self):
         pass
 
@@ -72,15 +72,14 @@ def principal():
     tipo = int(input("receta que quieres crear: 1-vegetariana o 2-no vegetariana "))
     if tipo == 1:
         print("Crear receta vegetariana: ")
-        #apto_veganos = input("Dime si es para veganos: ")
-        receta1 = RecetaVegetariana(nombre1, ingredientes1, pasos1,) #apto_veganos)
+        receta1 = RecetaVegetariana(nombre1, ingredientes1, pasos1)
+        return receta1
     elif tipo == 2:
         print("Crear receta para no vegetarianos: ")
-        #no_apto_veganos = input("Dime el punto de la carne: ")
-        receta2 = RecetaNoVegetariana(nombre1, ingredientes1, pasos1,) #no_apto_veganos)
+        receta2 = RecetaNoVegetariana(nombre1, ingredientes1, pasos1)
+        return receta2
     else:
         print("No has indicado el tipo correcto")
-    return receta1, receta2
 
 
 # Ejecutar el programa
